@@ -1,0 +1,21 @@
+# Default: normalize line endings to LF on commit
+* text=auto eol=lf
+
+# Shell scripts: always LF
+gradlew text eol=lf
+*.sh text eol=lf
+
+# Windows scripts: always CRLF
+gradlew.bat text eol=crlf
+*.bat text eol=crlf
+
+# Binary files: no line ending conversion
+*.jar binary
+*.class binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.gz binary

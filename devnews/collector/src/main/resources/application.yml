@@ -1,0 +1,75 @@
+spring:
+  application:
+    name: devnews-collector
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/devnews}
+    username: ${DB_USERNAME:devnews}
+    password: ${DB_PASSWORD:devnews}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:validate}
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+collector:
+  rss:
+    cron: "0 */30 * * * *"
+  github:
+    cron: "0 0 * * * *"
+    api-token: ${GITHUB_API_TOKEN}
+    repos:
+      - facebook/react
+      - vercel/next.js
+      - vuejs/vue
+      - sveltejs/svelte
+      - withastro/astro
+      - vitejs/vite
+      - microsoft/TypeScript
+      - tailwindlabs/tailwindcss
+      - pmndrs/zustand
+      - pmndrs/jotai
+      - TanStack/query
+  llm:
+    api-key: ${CLAUDE_API_KEY}
+    model: claude-haiku-4-5-20251001
+    max-tokens: 1024
+
+  rss-sources:
+    - name: "토스 테크"
+      url: "https://toss.tech/rss.xml"
+      category: FRONTEND
+    - name: "네이버 D2"
+      url: "https://d2.naver.com/d2.atom"
+      category: FRONTEND
+    - name: "카카오 기술블로그"
+      url: "https://tech.kakao.com/feed/"
+      category: FRONTEND
+    - name: "우아한형제들"
+      url: "https://techblog.woowahan.com/feed/"
+      category: FRONTEND
+    - name: "Dev.to Frontend"
+      url: "https://dev.to/feed/tag/frontend"
+      category: FRONTEND
+    - name: "Dev.to AI"
+      url: "https://dev.to/feed/tag/ai"
+      category: AI
+
+logging:
+  level:
+    com.devnews: INFO
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
