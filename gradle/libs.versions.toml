@@ -4,6 +4,7 @@ lombok = "1.18.40"
 rome = "2.1.0"
 springdoc = "2.8.16"
 spotless = "8.4.0"
+jjwt = "0.12.6"
 
 [libraries]
 spring-boot-bom = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springBoot" }
@@ -20,6 +21,9 @@ lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
 rome = { module = "com.rometools:rome", version.ref = "rome" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 springdoc-openapi-webmvc = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
+jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwt" }
+jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jjwt" }
+jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jjwt" }
 
 [plugins]
 springBoot = { id = "org.springframework.boot", version.ref = "springBoot" }
